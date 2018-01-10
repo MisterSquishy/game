@@ -1,4 +1,5 @@
 sceneSetups:
-- path: Assets/Troll Bridge Studios/2D Starter Kit/_Scenes/Demos/Demo Start.unity
+- path: Assets/Troll Bridge Studios/2D Starter Kit/_Scenes/Additional Scenes (Do not
+    run)/HouseLrg.unity
   isLoaded: 1
   isActive: 1
