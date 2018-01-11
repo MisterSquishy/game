@@ -44,7 +44,6 @@ namespace TrollBridge {
 					// IF the closest gameobject is not null.
 					if(_character != null){
                         // Move the actual character of this gameobject closer to _character gameobject.
-                        //Debug.Log(charStats.CurrentMoveSpeed);
 						character.characterEntity.transform.position = 
 							Vector2.MoveTowards(transform.position, _character.GetComponent<Character> ().characterEntity.transform.position, Time.deltaTime * Speed);
 					}

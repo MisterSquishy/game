@@ -36,7 +36,8 @@ namespace TrollBridge {
 				// IF the Animator is a Four Direction Animation,
 				// ELSE IF the Animator is a Eight Direction Animation,
 				// ELSE the Animator is a one direction animaton meaning that the there is an animation that only faces in 1 direction in which we will control which way it faces based on if it is moving left vs right or up vs down (FlipX vs FlipY).
-				if(_animator.GetLayerName(0) == "Four Base"){
+				if(_animator.GetLayerName(0) == "Four Base" || _animator.GetLayerName(0) == "Base Layer")
+                {
 					// Set true that we have a Four Direction Animation.
 					_fourDirAnim = true;
 					// Set false that we have a Eight Direction Animation.
