@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4ad9827d91b8e47bcf84ae032d1b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 2
+  characterType: 0
   characterEntity: {fileID: 1252688374852670}
   CanMove: 1
   AlterSpeed: 1
@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeToFollow: 0
-  AggroDistance: 10
-  Speed: 1
+  AggroDistance: 0
+  Speed: 1.5
 --- !u!212 &212006860962645274
 SpriteRenderer:
   m_ObjectHideFlags: 1

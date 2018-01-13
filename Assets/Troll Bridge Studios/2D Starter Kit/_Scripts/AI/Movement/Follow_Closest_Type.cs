@@ -26,6 +26,10 @@ namespace TrollBridge {
             {
                 Speed = charStats.CurrentMoveSpeed; //some npcs have char defined in parent
             }
+            if(AggroDistance == 0)
+            {
+                AggroDistance = float.PositiveInfinity;
+            }
 		}
 
   

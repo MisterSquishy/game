@@ -88,7 +88,7 @@ namespace TrollBridge {
 
 		// Get the closest character based on distance supplied and the type.
 		public static GameObject GetClosestCharacterType(Transform transform, CharacterType characterType, GameObject _character, float distance){
-			float dist = distance;
+            float dist = distance;
 			for(int i = 0; i < characters.Count; i++){
 				if(Vector2.Distance(transform.GetComponentInParent<Character>().characterEntity.transform.position, characters[i].GetComponentInParent<Character>().characterEntity.transform.position) < dist && characters[i].characterType == characterType){
 					_character = characters [i].GetComponentInParent<Character>().gameObject;
