@@ -438,8 +438,8 @@ namespace TrollBridge {
 		}
 
 		public void FourDirectionAnimation(float moveHorizontal, float moveVertical, Animator anim){
-			// IF we are moving we set the animation IsMoving to true,
-			// ELSE we are not moving.
+            // IF we are moving we set the animation IsMoving to true,
+            // ELSE we are not moving.
 			if(moveHorizontal != 0 || moveVertical != 0){
 				anim.SetBool("IsMoving", true);
 			}else{

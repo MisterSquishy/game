@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4103889916688558}
   - component: {fileID: 212006860962645274}
   - component: {fileID: 95824569043956764}
-  - component: {fileID: 114905654605647646}
+  - component: {fileID: 114645801142031250}
   - component: {fileID: 114024729396199978}
   - component: {fileID: 114343256818564040}
   m_Layer: 0
@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4613538720746968}
   - component: {fileID: 114669639394222052}
+  - component: {fileID: 50325849663076592}
   m_Layer: 0
   m_Name: Scout Manager
   m_TagString: Untagged
@@ -67,13 +68,33 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284965470593500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0970027, y: 0, z: 0}
+  m_LocalPosition: {x: -15, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103889916688558}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50325849663076592
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1284965470593500}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!95 &95824569043956764
 Animator:
   serializedVersion: 3
@@ -116,6 +137,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c231282802c865e45bbdb0c902d567fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114645801142031250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252688374852670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef31662cc07c66458d20df8c69f7465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypeToFollow: 0
+  AggroDistance: 0
+  ComfortZoneEnd: 1.2
+  ComfortZoneStart: 0.8
+  Speed: 1.5
 --- !u!114 &114669639394222052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,20 +184,6 @@ MonoBehaviour:
   GetHitSound: {fileID: 0}
   DieSound: {fileID: 0}
   afterDeathVisual: {fileID: 0}
---- !u!114 &114905654605647646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252688374852670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e25974fcb52d14e9d58b0f62882738, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TypeToFollow: 0
-  AggroDistance: 0
-  Speed: 1.5
 --- !u!212 &212006860962645274
 SpriteRenderer:
   m_ObjectHideFlags: 1

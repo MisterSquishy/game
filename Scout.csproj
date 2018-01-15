@@ -291,6 +291,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Troll Bridge Studios\2D Starter Kit\_Scripts\AI\Movement\Be_Scooter.cs" />
     <Compile Include="Assets\Troll Bridge Studios\2D Starter Kit\_Scripts\AI\Movement\Follow_Closest_Type.cs" />
     <Compile Include="Assets\Troll Bridge Studios\2D Starter Kit\_Scripts\AI\Movement\Point_To_Point_Movement.cs" />
     <Compile Include="Assets\Troll Bridge Studios\2D Starter Kit\_Scripts\Animation\Events\Attack_Timer.cs" />

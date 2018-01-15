@@ -52,8 +52,8 @@ namespace TrollBridge {
 		}
 		
 		void Update () {
-			// IF the user has an animation set and ready to go.
-			if (_animator != null) {
+            // IF the user has an animation set and ready to go.
+            if (_animator != null) {
 				// Adjust for the current location.
 				Vector2 curLocation = (Vector2)_transform.position - prevLocation;
 				// IF there is a Character component.
@@ -82,10 +82,9 @@ namespace TrollBridge {
 		}
 
 		private void PlayAnimation(float hor, float vert){
-
-			// IF the NPC has a Four Direction Animation,
-			// ELSE IF the NPC has a Eight Direction Animation.
-			if (_fourDirAnim) {
+            // IF the NPC has a Four Direction Animation,
+            // ELSE IF the NPC has a Eight Direction Animation.
+            if (_fourDirAnim) {
 				// Play animations.
 				Grid.helper.FourDirectionAnimation (hor, vert, _animator);
 			} else if (_eightDirAnim) {
