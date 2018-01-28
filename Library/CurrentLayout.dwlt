@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 521}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -67,10 +67,10 @@ MonoBehaviour:
     y: 0
     width: 373
     height: 947
-  m_MinSize: {x: 234, y: 471}
-  m_MaxSize: {x: 10004, y: 14021}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 111
+  controlID: 79
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 713, y: 471}
-  m_MaxSize: {x: 18008, y: 14021}
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 110
+  controlID: 101
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 64
+  controlID: 28
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -338,7 +338,7 @@ MonoBehaviour:
     - e00: 0.855948
       e01: 0
       e02: 0
-      e03: 251.64871
+      e03: 240.97026
       e10: 0
       e11: 0.855948
       e12: 0
@@ -448,34 +448,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Troll Bridge Studios/2D Starter Kit/_Scenes/Additional Scenes (Do not
-      run)
+    - Assets/Troll Bridge Studios/2D Starter Kit/_Scenes/Demos
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Troll Bridge Studios/2D Starter Kit/_Scenes/Additional Scenes (Do not run)
+  - Assets/Troll Bridge Studios/2D Starter Kit/_Scenes/Demos
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Dropbox\unity stuff\Scout
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 882b0000
-    m_LastClickedID: 11144
-    m_ExpandedIDs: 00000000582800007e280000c22800000e290000aa2b0000e22e000000ca9a3bffffff7f
+    m_SelectedIDs: f8290000
+    m_LastClickedID: 10744
+    m_ExpandedIDs: 00000000582800007e280000ba280000c22800000e290000f6290000aa2b0000e22e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Demos
+      m_OriginalName: Demos
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10744
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -489,7 +488,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000582800007e280000c22800000e290000aa2b0000be2c0000ec2c0000e22e0000
+    m_ExpandedIDs: 00000000582800007e280000ba280000c22800000e290000aa2b0000e22e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -572,29 +571,29 @@ MonoBehaviour:
     height: 295
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 16}
-    m_SelectedIDs: 3467fbff
-    m_LastClickedID: -301260
-    m_ExpandedIDs: 32dffbff14e4fbff6a1afcffd01dfcffa827fdff0e2bfdffa444fdff0a48fdffcc4cfdff7497fdffda9afdff4aabfdffeeb8fdff54bcfdffa8cbfdff58d2fdff40dbfdff3a0ffeffa012feff4421feff0e31feff7434feffc844feff8e52fefff455feff1a70feff7efdfeffe400ffff787bffffa68bffff0c8fffff98fbffff00000000c8580000d25a000054ae00005eb0000034d200003ed4000052e500005ce7000070f800007afa0000d4150100de170100f2280100fc2a01007c3c0100863e01004a4501005447010016490100984a0100
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 8c2b0000
+    m_LastClickedID: 0
+    m_ExpandedIDs: d412ffffec47ffffb469ffffa683ffff569dffff6eadffff30c1ffff96c4ffff0cd9ffff98fbffff00000000fe4b0000364e0000c4600000fc620000e07e000018810000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Scout
+      m_OriginalName: Scout
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -16082
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 2}
     m_SearchString: 
   m_ExpandedScenes:
-  - Field
+  - Demo Start
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
