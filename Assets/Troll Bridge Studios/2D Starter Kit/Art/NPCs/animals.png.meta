@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3f1135c19a1c4ba4ea8722bf110207b7
-timeCreated: 1517173570
+timeCreated: 1517318106
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -190,9 +190,9 @@ TextureImporter:
       name: dog_0
       rect:
         serializedVersion: 2
-        x: 480
+        x: 479
         y: 502
-        width: 26
+        width: 27
         height: 32
       alignment: 9
       pivot: {x: 0.5366833, y: 0.5}
@@ -219,8 +219,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 584
-        y: 504
-        width: 26
+        y: 502
+        width: 27
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -246,9 +246,9 @@ TextureImporter:
       name: dog_4
       rect:
         serializedVersion: 2
-        x: 528
+        x: 526
         y: 432
-        width: 37
+        width: 39
         height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -290,7 +290,7 @@ TextureImporter:
         serializedVersion: 2
         x: 527
         y: 360
-        width: 37
+        width: 39
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -372,9 +372,9 @@ TextureImporter:
       name: dog_13
       rect:
         serializedVersion: 2
-        x: 527
+        x: 525
         y: 143
-        width: 38
+        width: 40
         height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -401,8 +401,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 527
-        y: 71
-        width: 38
+        y: 72
+        width: 40
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -485,7 +485,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 218
-        y: 504
+        y: 505
         width: 30
         height: 34
       alignment: 0
@@ -527,7 +527,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 376
-        y: 504
+        y: 505
         width: 26
         height: 36
       alignment: 0
@@ -541,7 +541,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 428
-        y: 504
+        y: 505
         width: 26
         height: 34
       alignment: 0
