@@ -24,6 +24,7 @@ namespace TrollBridge
         private Character_Stats charStats;
         private List<Character> listCharacter = new List<Character>();
         private bool Seen_Something;
+        private GameObject Thing_In_Mouth;
 
         void Start()
         {
@@ -111,7 +112,8 @@ namespace TrollBridge
         void Look_Around()
         {
             Vector3 start = transform.position;
-            int animation_direction = GetComponent<Animator>().GetInteger("Direction"); //this isn't stupid, right?
+            //this isn't stupid, right?
+            int animation_direction = GetComponent<Animator>().GetInteger("Direction");
             Vector3 direction;
             switch (animation_direction) {
                 case 1:
@@ -137,12 +139,13 @@ namespace TrollBridge
                 objectsInSight.UnionWith(Physics2D.RaycastAll(start, Quaternion.AngleAxis(i, direction) * direction, distance));
             }
 
-            //now iterate over all results to work out what has happened
             foreach (RaycastHit2D obj in objectsInSight)
             {
-                Debug.Log(obj);
-
-                //Seen_Something = true;
+                Exciting_Object exciting_obj = (Exciting_Object) obj.collider.gameObject.GetComponent("Exciting_Object");
+                if (exciting_obj != null)
+                {
+                    Seen_Something = true;
+                }
             }
         }
     }
