@@ -23,8 +23,10 @@ namespace TrollBridge
         private Character character;
         private Character_Stats charStats;
         private List<Character> listCharacter = new List<Character>();
-        private bool Seen_Something;
-        private GameObject Thing_In_Mouth;
+        private Exciting_Object Current_Exciting_Object;
+        private Exciting_Object Thing_In_Mouth;
+        private int Excitement_Level = 2;
+        private float True_Speed { get { return Speed * Excitement_Level/2; } }
 
         void Start()
         {
@@ -56,13 +58,14 @@ namespace TrollBridge
                 if (listCharacter.Count > 0)
                 {
                     {
-                        Seen_Something = false;
                         Look_Around();
-                        if (Seen_Something)
+                        if (Current_Exciting_Object != null)
                         {
-                            //do stuff
+                            Excitement_Level = (int) Current_Exciting_Object.ExcitementLevel;
+                            Go_To_Exciting_Object();
                         } else
                         {
+                            Excitement_Level = 2;
                             Wander();
                         }
                     }
@@ -84,13 +87,13 @@ namespace TrollBridge
                 {
                     // Move the actual character of this gameobject closer to _character gameobject.
                     character.characterEntity.transform.position =
-                        Vector2.MoveTowards(transform.position, _character.GetComponent<Character>().characterEntity.transform.position, Time.deltaTime * Speed);
+                        Vector2.MoveTowards(transform.position, _character.GetComponent<Character>().characterEntity.transform.position, Time.deltaTime * True_Speed);
                 }
                 else if (distance < ComfortZoneStart)
                 {
                     // Move the actual character of this gameobject further from _character gameobject.
                     character.characterEntity.transform.position =
-                        Vector2.MoveTowards(transform.position, _character.GetComponent<Character>().characterEntity.transform.position, Time.deltaTime * Speed * -1);
+                        Vector2.MoveTowards(transform.position, _character.GetComponent<Character>().characterEntity.transform.position, Time.deltaTime * True_Speed * -1);
                 }
             }
         }
@@ -129,23 +132,36 @@ namespace TrollBridge
                     direction = Vector3.right;
                     break;
             }
-            float distance = 5f;
+            float distance = 10f;
 
 
             HashSet<RaycastHit2D> objectsInSight = new HashSet<RaycastHit2D>();
-            for (float i = -30; i <= 30; i += 1)
+            for (float i = -45; i <= 45; i += 1)
             {
-                Debug.DrawRay(start, Quaternion.AngleAxis(i, Vector3.forward) * direction * distance, Color.red);
-                objectsInSight.UnionWith(Physics2D.RaycastAll(start, Quaternion.AngleAxis(i, direction) * direction, distance));
+                Vector3 startOffset = Vector3.Scale(Quaternion.AngleAxis(i, Vector3.forward) * direction, new Vector3(0.5f, 0.5f, 0.5f));
+                Debug.DrawRay(start + startOffset, Quaternion.AngleAxis(i, Vector3.forward) * direction * distance, Color.red);
+                objectsInSight.UnionWith(Physics2D.RaycastAll(start + startOffset, Quaternion.AngleAxis(i, Vector3.forward) * direction, distance));
             }
 
             foreach (RaycastHit2D obj in objectsInSight)
             {
-                Exciting_Object exciting_obj = (Exciting_Object) obj.collider.gameObject.GetComponent("Exciting_Object");
-                if (exciting_obj != null)
+                Exciting_Object exciting_obj = (Exciting_Object)obj.collider.gameObject.GetComponent("Exciting_Object");
+                if (Current_Exciting_Object == null || (exciting_obj != null && exciting_obj.ExcitementLevel > Current_Exciting_Object.ExcitementLevel))
                 {
-                    Seen_Something = true;
+                    Current_Exciting_Object = exciting_obj;
                 }
+            }
+        }
+
+        void Go_To_Exciting_Object()
+        {
+            // Move the actual character of this gameobject closer to _character gameobject.
+            character.characterEntity.transform.position =
+                Vector2.MoveTowards(transform.position, Current_Exciting_Object.transform.position, Time.deltaTime * True_Speed);
+            if (transform.position == Current_Exciting_Object.transform.position)
+            {
+                Thing_In_Mouth = Current_Exciting_Object;
+                Current_Exciting_Object = null;
             }
         }
     }
