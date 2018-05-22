@@ -2,7 +2,7 @@
 
 namespace TrollBridge {
 
-	public enum CharacterType {Hero, Enemy, Neutral, All}
+	public enum CharacterType {Hero, Scout, Enemy, Neutral, All}
 	public abstract class Character : MonoBehaviour {
 
 		// The type of character this is. The hero (Player), Enemy (normal mobs / bosses) or Neutral.
