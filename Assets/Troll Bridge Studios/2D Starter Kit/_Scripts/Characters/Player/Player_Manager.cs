@@ -75,33 +75,10 @@ namespace TrollBridge {
 			LoadStatsFromItems();
 			// Make the player look at the NPC it is interacting with.
 			PlayerLookDirection();
-			// IF the InteractionKey is the same as the AttackKey. (In this case, interaction has a higher priority than attacking.)
-			if (InteractionKey == AttackKey) {
-				// IF we pressed the Interaction Key.
-				if (Input.GetKeyDown (InteractionKey)) {
-					// IF we are close enough to an Action Key Dialogue component.
-					if(DialogueInteraction()){
-						// Create the dialogue with the closest GameObject with an Action Key Dialogue.
-						ClosestAKD.CreateDialogue ();
-						// This is what we are focusing on now so lets return.
-						return;
-					}
-					// IF there is an Animator on the player AND we actually have a weapon to attack with.
-					if (CharacterAnimator != null && equipment.GetWeapon() != null) {
-						// ATTACK!!!
-						Attack ("IsAttacking", AttackSound);
-					}
-					return;
-				}
-			}
-
-			// IF we pressed the Attack Key.
-			if (Input.GetKeyDown (AttackKey)) {
-				// IF there is an Animator on the player AND we actually have a weapon to attack with.
-				if (CharacterAnimator != null && equipment.GetWeapon() != null) {
-					// ATTACK!!!
-					Attack ("IsAttacking", AttackSound);
-				}
+			if (Input.GetKeyDown (InteractionKey) && DialogueInteraction()) {
+				ClosestAKD.CreateDialogue ();
+			} else if (Input.GetKeyDown (AttackKey) && CharacterAnimator != null) {
+				Attack ("IsAttacking", AttackSound);
 			}
 		}
 
@@ -118,10 +95,6 @@ namespace TrollBridge {
 				CharacterAnimator.SetBool (animationNameValue, true);
 				// Play the attack sound (if there is one).
 				Grid.soundManager.PlaySound (clip);
-				// Set the IsMoving variable for the animation to false since the character will not be moving while attacking. (Personal choice)
-				CharacterAnimator.SetBool ("IsMoving", false);
-				// Make it to where the player cannot move. (Personal choice)
-				CanMove = false;
 			}
 		}
 

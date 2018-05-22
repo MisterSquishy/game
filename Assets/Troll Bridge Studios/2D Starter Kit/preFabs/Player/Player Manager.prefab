@@ -248,7 +248,7 @@ MonoBehaviour:
   ClosestAKD: {fileID: 0}
   ListOfAreaDialogues: []
   ListOfActionKeyDialogues: []
-  AttackSound: {fileID: 8300000, guid: ffb653f55b24903438856f1860866777, type: 3}
+  AttackSound: {fileID: 8300000, guid: 0fae3e787ea28ea4b8ccdd0306dd8b66, type: 3}
 --- !u!114 &11446050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,6 +285,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -329,6 +330,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -541,6 +543,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114000010606595590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,6 +699,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

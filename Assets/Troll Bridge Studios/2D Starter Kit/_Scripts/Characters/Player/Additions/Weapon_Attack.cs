@@ -19,10 +19,11 @@ namespace TrollBridge {
 			Item weapon = equipment.GetWeapon ();
 			// Get the sprite renderer of the this weapon.
 			weaponRenderer = GetComponent<SpriteRenderer> ();
-			// Get the Sprite Image of the weapon and set it to this GameObject's Sprite.
-			weaponRenderer.sprite = weapon.SpriteImage;
-			// Set the coloring of the Sprite renderer.
-			weaponRenderer.color = new Color (weapon.R, weapon.G, weapon.B, weapon.A);
+            if (weapon != null)
+            {
+                weaponRenderer.sprite = weapon.SpriteImage;
+                weaponRenderer.color = new Color(weapon.R, weapon.G, weapon.B, weapon.A);
+            }
 		}
 
 		void Update(){
