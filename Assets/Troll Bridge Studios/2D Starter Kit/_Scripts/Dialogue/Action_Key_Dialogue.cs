@@ -4,15 +4,8 @@ using System.Collections.Generic;
 
 namespace TrollBridge {
 
-	public class Action_Key_Dialogue : MonoBehaviour {
-
-		/// Set to true if you want to see the area that the Player can interact with the NPC
-		public bool showAreaInScene = false;
-		/// The Collider2D that represents the range for the Interaction to happen.
-		public Collider2D rangeCollider;
-		/// Sets the color of the Collider2D
-		public Color areaColor = Color.black;
-
+	public class Action_Key_Dialogue : Interaction_Area
+    {
 		/// The Dialogue UI GameObject that will be displayed.
 		public GameObject dialogueBox;
 		/// The color alteration for the 'Dialogue UI'.  Leaving this color 'white' will keep the same look for your 'Dialogue UI' GameObject.
@@ -52,22 +45,12 @@ namespace TrollBridge {
 
 		// The index in the dialogue.
 		private int dialogueIndex= 0;
-		// The bool to let us know we are currently in a transition.
-		private bool isInTransition = false;
 		// The dialogue component.
 		private Dialogue dialogueComponent;
-		// The Player State.
-		private Player_Manager _playerManager;
-		// The Character component on the main object.
-		private Character chara;
 
 
-		void Awake(){
-			// IF there is a mainObject.
-			if(GetComponentInParent<Character>() != null){
-				// The Character component.
-				chara = GetComponentInParent<Character>();
-			}
+		protected override void Awake(){
+            base.Awake();
 			// Get the Dialogue Component.
 			dialogueComponent = dialogueBox.GetComponent<Dialogue>();
 			// Check to make sure the user has the scripts working correctly.
@@ -77,10 +60,6 @@ namespace TrollBridge {
 		}
 
 		void DebugCheck(){
-			// IF user has the show area in scene 
-			if(showAreaInScene && (rangeCollider == null)){
-				Grid.helper.DebugErrorCheck(70, this.GetType(), gameObject);
-			}
 			// IF the user didnt set a dialogue box gameobject to be shown.
 			if(dialogueBox == null){
 				Grid.helper.DebugErrorCheck(71, this.GetType(), gameObject);
@@ -95,51 +74,8 @@ namespace TrollBridge {
 			}
 		}
 
-		void OnDrawGizmos(){
-			// This is used for Scene view.
-			if(showAreaInScene && rangeCollider != null){
-				// IF we have a CircleCollider2D,
-				// ELSE IF we have a BoxCollider2D.
-				if(rangeCollider.GetType() == typeof(CircleCollider2D)){
-					// Display the Circle Collider on the scene view.
-					SceneCircleCollider(rangeCollider.GetComponent<CircleCollider2D>(), areaColor);
-				}else if(rangeCollider.GetType() == typeof(BoxCollider2D)){
-					// Display the Box Collider on the scene view.
-					SceneBoxCollider(rangeCollider.GetComponent<BoxCollider2D>(), areaColor);
-				}
-			}
-		}
-
-		void OnTriggerEnter2D(Collider2D coll){
-			// Attempt to grab the Player_Manager script in this gameobjects parent.
-			Player_Manager _player = coll.GetComponentInParent<Player_Manager>();
-			// IF the colliding object doesnt have the Player Manager script.
-			if(_player == null){
-				return;
-			}
-			// IF the colliding object's tag isn't Player.
-			if(coll.tag != "Player"){
-				return;
-			}
-			// Assign the Player Manager script.
-			_playerManager = _player;
-			// We add this Script to our player state list.
-			_playerManager.ListOfActionKeyDialogues.Add(this);				
-		}
-
-		void OnTriggerExit2D(Collider2D coll){
-			// Attempt to grab the Player_Manager script
-			Player_Manager _player = coll.GetComponentInParent<Player_Manager>();
-			// IF the colliding object doesnt have the Player Manager script.
-			if(_player == null){
-				return;
-			}
-			// IF the colliding object's tag isn't Player.
-			if(coll.tag != "Player"){
-				return;
-			}
-			// We remove this script from our player state list.
-			_playerManager.ListOfActionKeyDialogues.Remove(this);
+        protected override void OnTriggerExit2D(Collider2D coll){
+            base.OnTriggerExit2D(coll);
 			// IF the dialogueBox is still active.
 			if(dialogueBox.activeInHierarchy){
 				// Stop all coroutines on this script.
@@ -193,8 +129,20 @@ namespace TrollBridge {
 				yield return StartCoroutine (DialogueOut ());
 				// Reset the Dialogue.
 				ResetDialogue ();
-				// Break out we are done.
-				yield break;
+                // Unfreeze the player (in case we froze them).
+                _playerManager.CanMove = true;
+                // IF a Character script exists.
+                if (chara != null)
+                {
+                    // Make this GameObject not be able to move.
+                    chara.CanMove = true;
+                    // Let everything know that this GameObject has or has not a running dialogue.
+                    chara.isActionKeyDialogueRunning = false;
+                    // Let everything know who the focus of this Dialogue is.
+                    chara.actionKeyFocusTarget = null;
+                }
+                // Break out we are done.
+                yield break;
 			} else {
 				// IF we want multiple dialogue transitions,
 				// ELSE we just want the text to be changed.
@@ -365,24 +313,6 @@ namespace TrollBridge {
 				// deactivate the dialogue box.
 				dialogueBox.SetActive(false);
 			}
-			// IF the players closest action key dialogue is this gameobject.
-			if(_playerManager.ClosestAKD == this){
-				// Set the closest action key dialogue to null.
-				_playerManager.ClosestAKD = null;
-				// Set the bool to show if this is an action key dialogue to false.
-				_playerManager.IsActionKeyDialogued = false;
-			}
-			// Unfreeze the player.
-			_playerManager.CanMove = true;
-			// IF a Character script exists.
-			if(chara != null){
-				// Make this GameObject not be able to move.
-				chara.CanMove = true;
-				// Let everything know that this GameObject has or has not a running dialogue.
-				chara.isActionKeyDialogueRunning = false;
-				// Let everything know who the focus of this Dialogue is.
-				chara.actionKeyFocusTarget = null;
-			}
 		}
 
 		private void RemoveAreaDialogues(){
@@ -395,40 +325,10 @@ namespace TrollBridge {
 			}
 		}
 
-		// Used for displaying collider information on the Scene View.
-		private void SceneCircleCollider(CircleCollider2D coll, Color areaColor){
-			#if UNITY_EDITOR
-			// Set the color.
-			UnityEditor.Handles.color = areaColor;
-			// Get the offset.
-			Vector3 offset = coll.offset;
-			// Get the position of the collider gameobject.
-			Vector3 discCenter = coll.transform.position;
-			// Scaling incase the gameobject has been scaled.
-			float scale;
-			// IF the x scale is larger than the y scale.
-			if(transform.lossyScale.x > transform.lossyScale.y){
-				// Make scale the size of the x.
-				scale = transform.lossyScale.x;
-			}else{
-				// Make scale the size of the y.
-				scale = transform.lossyScale.y;
-			}
-			// Draw the Disc on the Scene View.
-			UnityEditor.Handles.DrawWireDisc(discCenter + offset, Vector3.back, coll.radius * scale);
-			#endif
-		}
+        public override void Do_Interaction()
+        {
+            this.CreateDialogue();
+        }
 
-		// Used for displaying collider information on the Scene View.
-		private void SceneBoxCollider(BoxCollider2D coll, Color areaColor){
-			// Set the color.
-			Gizmos.color = areaColor;
-			// Get the offset.
-			Vector3 offset = coll.offset;
-			// Get the position of the collider gameobject.
-			Vector3 boxCenter = coll.transform.position;
-			// Draw the Box on the Scene View.
-			Gizmos.DrawWireCube(boxCenter + offset, new Vector2(coll.size.x * transform.lossyScale.x, coll.size.y * transform.lossyScale.y));
-		}
-	}
+    }
 }

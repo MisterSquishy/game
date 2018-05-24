@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+//TODO INHERIT FROM INTERACTION_AREA
+
 namespace TrollBridge {
 
 	public class Area_Dialogue : MonoBehaviour {

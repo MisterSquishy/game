@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
+//TODO INHERIT FROM INTERACTION_AREA
+
 namespace TrollBridge {
 
 	[RequireComponent(typeof(RectTransform))]

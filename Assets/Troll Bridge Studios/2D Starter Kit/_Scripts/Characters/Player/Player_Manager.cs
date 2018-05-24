@@ -19,11 +19,11 @@ namespace TrollBridge {
 		// Is the player engaged in an Action Key Dialogue.
 		public bool IsActionKeyDialogued = false;
 		// The Action Key Dialogue we are currently engaged in due to it being the closest.
-		public Action_Key_Dialogue ClosestAKD = null;
+		public Interaction_Area ClosestInteractionArea = null;
 		// The List of Area Dialogues currently inside.
 		public List<Area_Dialogue> ListOfAreaDialogues = new List<Area_Dialogue>();
 		// The List of Action Key Dialogues currently inside.
-		public List<Action_Key_Dialogue> ListOfActionKeyDialogues = new List<Action_Key_Dialogue>();
+		public List<Interaction_Area> ListOfInteractionAreas = new List<Interaction_Area>();
 
 		private Collider2D playerCollider;
 		private Equipment equipment;
@@ -76,7 +76,7 @@ namespace TrollBridge {
 			// Make the player look at the NPC it is interacting with.
 			PlayerLookDirection();
 			if (Input.GetKeyDown (InteractionKey) && DialogueInteraction()) {
-				ClosestAKD.CreateDialogue ();
+                ClosestInteractionArea.Do_Interaction();
 			} else if (Input.GetKeyDown (AttackKey) && CharacterAnimator != null) {
 				Attack ("IsAttacking", AttackSound);
 			}
@@ -101,29 +101,29 @@ namespace TrollBridge {
 
 		private bool DialogueInteraction(){
 			// IF we are inside a Action Key Dialogue area.
-			if(ListOfActionKeyDialogues.Count > 0){
+			if(ListOfInteractionAreas.Count > 0){
 				// IF we are not already engaged in a dialogue.
 				if(!IsActionKeyDialogued){
 					// Grab the list of dialogue gameobjects that the player is currently inside.
-					List<Action_Key_Dialogue> akd = ListOfActionKeyDialogues;
+					List<Interaction_Area> interaction_areas = ListOfInteractionAreas;
 					// Preset a distance variable to detect the closest action key dialogue.
 					float _dist = -1f;
 					// Loop through all the Action Key Dialogues.
-					for(int i = 0; i < akd.Count; i++){
+					for(int i = 0; i < interaction_areas.Count; i++){
 						// See which one is the closest.
-						float dist = Vector2.Distance(characterEntity.transform.position, akd[i].gameObject.transform.position);
+						float dist = Vector2.Distance(characterEntity.transform.position, interaction_areas[i].gameObject.transform.position);
 						// IF this is the first time in here. Also this takes care of 1 Interactive NPC in the List.
 						// ELSE IF we have more interactive npcs and we need to compare distance to see which is closest.
 						if(_dist == -1f){
 							// Set the shortest distance.
 							_dist = dist;
 							// Set the closest action key dialogue.
-							ClosestAKD = akd[i];
+							ClosestInteractionArea = interaction_areas[i];
 						}else if(dist < _dist){
 							// Set the shortest distance.
 							_dist = dist;
 							// Set the closest action key dialogue.
-							ClosestAKD = akd[i];
+							ClosestInteractionArea = interaction_areas[i];
 						}
 					}
 					// We are now engaged in a dialogue.
@@ -141,9 +141,9 @@ namespace TrollBridge {
 		/// lets make sure we are facing them (if you have the animations to do so, if not nothing bad will happen in terms of crashing or atleast it shouldnt :3).
 		/// </summary>
 		private void PlayerLookDirection(){
-			if(ClosestAKD != null){
+			if(ClosestInteractionArea != null){
 				// Store the focused objects Transform.
-				Transform focTransform = ClosestAKD.transform;
+				Transform focTransform = ClosestInteractionArea.transform;
 				// IF we have a Four Direction Animation for this gameobject,
 				// ELSE IF we have a Eight Direction Animation for this gameobject.
 				if(FourDirAnim){

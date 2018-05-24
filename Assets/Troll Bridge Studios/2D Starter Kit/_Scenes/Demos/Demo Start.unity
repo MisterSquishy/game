@@ -2322,23 +2322,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ad53d65a4e3d941b0dcc671639f818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTransition: 1
-  fadeTime: 1
+  fadeTransition: 0
+  fadeTime: 0.25
   NameMusic:
   - Name: Demo Start
     BGMusic: {fileID: 0}
   - Name: MainMenu
-    BGMusic: {fileID: 8300000, guid: d0b0000c821593a499762febe7cfd438, type: 3}
+    BGMusic: {fileID: 0}
   - Name: MainWorld
-    BGMusic: {fileID: 8300000, guid: d0b0000c821593a499762febe7cfd438, type: 3}
+    BGMusic: {fileID: 0}
   - Name: HouseMd
-    BGMusic: {fileID: 8300000, guid: d0b0000c821593a499762febe7cfd438, type: 3}
+    BGMusic: {fileID: 0}
   - Name: HouseLrg
-    BGMusic: {fileID: 8300000, guid: d0b0000c821593a499762febe7cfd438, type: 3}
+    BGMusic: {fileID: 0}
   - Name: HouseSml
-    BGMusic: {fileID: 8300000, guid: d0b0000c821593a499762febe7cfd438, type: 3}
+    BGMusic: {fileID: 0}
   - Name: InnBasement
-    BGMusic: {fileID: 8300000, guid: d0b0000c821593a499762febe7cfd438, type: 3}
+    BGMusic: {fileID: 0}
+  - Name: Field
+    BGMusic: {fileID: 0}
 --- !u!114 &827076141
 MonoBehaviour:
   m_ObjectHideFlags: 0
