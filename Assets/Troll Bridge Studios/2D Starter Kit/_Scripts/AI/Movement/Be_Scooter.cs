@@ -23,9 +23,8 @@ namespace TrollBridge
         private Character character;
         private Character_Stats charStats;
         private List<Character> listCharacter = new List<Character>();
-        private Exciting_Object Current_Exciting_Object;
-        private Exciting_Object Current_Held_Object;
-        private Exciting_Object Thing_In_Mouth;
+        public Exciting_Object Current_Exciting_Object;
+        public Exciting_Object Current_Held_Object;
         private int Excitement_Level = 2;
         private float True_Speed { get { return Speed * Excitement_Level/2; } }
 
@@ -63,7 +62,7 @@ namespace TrollBridge
                         if (Current_Exciting_Object != null)
                         {
                             Excitement_Level = (int) Current_Exciting_Object.ExcitementLevel;
-                            Go_To_Exciting_Object();
+                            Get_Exciting_Object();
                         } else
                         {
                             Excitement_Level = 2;
@@ -154,18 +153,24 @@ namespace TrollBridge
             }
         }
 
-        void Go_To_Exciting_Object()
+        void Get_Exciting_Object()
         {
             // Move the actual character of this gameobject closer to _character gameobject.
             character.characterEntity.transform.position =
                 Vector2.MoveTowards(transform.position, Current_Exciting_Object.transform.position, Time.deltaTime * True_Speed);
             if (transform.position == Current_Exciting_Object.transform.position)
             {
-                Thing_In_Mouth = Current_Exciting_Object;
                 Current_Exciting_Object.IsInMouth = true;
                 Current_Held_Object = Current_Exciting_Object;
                 Current_Exciting_Object = null;
             }
+        }
+
+        public void Drop_It()
+        {
+            Current_Held_Object.ExcitementLevel = 0; //so she doesn't pick it right back up
+            Current_Held_Object.IsInMouth = false;
+            Current_Held_Object = null;
         }
     }
 }

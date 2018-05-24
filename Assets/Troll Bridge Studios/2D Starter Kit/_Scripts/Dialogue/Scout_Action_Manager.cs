@@ -6,9 +6,14 @@ namespace TrollBridge {
 
 	public class Scout_Action_Manager : Interaction_Area
     {
+        private Be_Scooter _scoutManager;
         public override void Do_Interaction()
         {
-            Debug.Log("I DID THE THING");
+            _scoutManager = this.GetComponentInParent<Be_Scooter>();
+            if (_scoutManager.Current_Held_Object != null)
+            {
+                _scoutManager.Drop_It();
+            }
         }
 
     }
