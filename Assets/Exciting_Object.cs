@@ -12,6 +12,7 @@ namespace TrollBridge
         public bool CanBePickedUp = false;
         public bool CanBeChewed = false;
         public bool IsInMouth = false;
+        public bool IsInHand = false;
         private SpriteRenderer playerRenderer;
         private SpriteRenderer objectRenderer;
 
@@ -31,6 +32,14 @@ namespace TrollBridge
                 objectRenderer.sortingOrder = playerRenderer.sortingOrder + 1;
                 GameObject _character = null;
                 _character = Character_Manager.GetClosestCharacterTypeWithRawTransform(this.transform, CharacterType.Scout, _character, float.PositiveInfinity);
+                // Move the actual character of this gameobject closer to _character gameobject.
+                this.transform.position = _character.transform.GetChild(0).position; //get the actual scout, not the scout manager
+            }
+            else if (IsInHand)
+            {
+                objectRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+                objectRenderer.sortingOrder = playerRenderer.sortingOrder + 1;
+                GameObject _character = Character_Manager.GetPlayerManager().GetComponent<Player_Manager>().GetComponentInParent<Character>().gameObject;
                 // Move the actual character of this gameobject closer to _character gameobject.
                 this.transform.position = _character.transform.GetChild(0).position; //get the actual scout, not the scout manager
             }

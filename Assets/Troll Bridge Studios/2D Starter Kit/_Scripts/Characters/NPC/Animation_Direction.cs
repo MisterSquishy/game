@@ -73,7 +73,7 @@ namespace TrollBridge {
 			}
 			// IF there is a Character script attached to this gameobject.
 			if(isCharacter){
-				// IF there is an Action Key Dialogue currently running.
+				// IF there is an Interaction Area currently running.
 				if(_character.isActionKeyDialogueRunning){
 					// Handle the direction the NPC is looking.
 					NPCLookDirection();

@@ -833,10 +833,10 @@ namespace TrollBridge {
 				"Set locations for the GameObject to move towards in '" + script + "' that is attached to your '" + _gameObject.name + "' GameObject.", _gameObject);
 				break;
 
-	//		// The user user didn't set up the Action Key dialogue properly by not making 
+	//		// The user user didn't set up the Interaction Area properly by not making 
 	//		// this script be on a child gameobject of the main NPC gameobject.
 	//		case 77:
-	//			Debug.Log ("The GameObject you have your Action Key Dialogue script on is not a child of the main NPC GameObject in the '" + script + "' that is attached to your '" + _gameObject.name + "' GameObject.  " +
+	//			Debug.Log ("The GameObject you have your Interaction Area script on is not a child of the main NPC GameObject in the '" + script + "' that is attached to your '" + _gameObject.name + "' GameObject.  " +
 	//			"Create a child GameObject for your NPC GameObject and assign this script and the desired Collider2D for that GameObject in '" + script + "' that is attached to your '" + _gameObject.name + "' GameObject.", _gameObject);
 	//			break;
 	//

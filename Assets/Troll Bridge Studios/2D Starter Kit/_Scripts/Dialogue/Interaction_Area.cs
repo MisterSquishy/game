@@ -97,12 +97,12 @@ namespace TrollBridge
             {
                 return;
             }
-            // IF the players closest action key dialogue is this gameobject.
+            // IF the players closest Interaction Area is this gameobject.
             if (_playerManager.ClosestInteractionArea == this)
             {
-                // Set the closest action key dialogue to null.
+                // Set the closest Interaction Area to null.
                 _playerManager.ClosestInteractionArea = null;
-                // Set the bool to show if this is an action key dialogue to false.
+                // Set the bool to show if this is an Interaction Area to false.
                 _playerManager.IsActionKeyDialogued = false;
             }
             // Unfreeze the player (in case we froze them).

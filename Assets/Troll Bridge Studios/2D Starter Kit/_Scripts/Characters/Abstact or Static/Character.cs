@@ -25,9 +25,9 @@ namespace TrollBridge {
 		// Is there a Eight Direction Animation.
 		public bool EightDirAnim = false;
 
-		// Is there a Action Key Dialogue currently running.
+		// Is there a Interaction Area currently running.
 		public bool isActionKeyDialogueRunning = false;
-		// The focus target for the Action Key Dialogue.
+		// The focus target for the Interaction Area.
 		public GameObject actionKeyFocusTarget;
 
 		// Can this character be jolted (knockbacked) when taking damage;

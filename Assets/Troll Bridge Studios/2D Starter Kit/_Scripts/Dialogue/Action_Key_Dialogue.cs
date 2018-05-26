@@ -92,7 +92,7 @@ namespace TrollBridge {
 				// Do nothing and let the dialogue keep going
 				return;
 			}
-			// IF we are not currently engaged in this Action Key Dialogue.  The dialogue box will be inactive if we are not engaged in it.
+			// IF we are not currently engaged in this Interaction Area.  The dialogue box will be inactive if we are not engaged in it.
 			if (!dialogueBox.activeInHierarchy) {
 				// Freeze the player.
 				_playerManager.CanMove = false;

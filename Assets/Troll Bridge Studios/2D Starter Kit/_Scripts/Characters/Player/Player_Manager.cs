@@ -16,13 +16,13 @@ namespace TrollBridge {
 		// The invert movement for the Y.
 		public int PlayerInvertY = 1;
 
-		// Is the player engaged in an Action Key Dialogue.
+		// Is the player engaged in an Interaction Area.
 		public bool IsActionKeyDialogued = false;
-		// The Action Key Dialogue we are currently engaged in due to it being the closest.
+		// The Interaction Area we are currently engaged in due to it being the closest.
 		public Interaction_Area ClosestInteractionArea = null;
 		// The List of Area Dialogues currently inside.
 		public List<Area_Dialogue> ListOfAreaDialogues = new List<Area_Dialogue>();
-		// The List of Action Key Dialogues currently inside.
+		// The List of Interaction Areas currently inside.
 		public List<Interaction_Area> ListOfInteractionAreas = new List<Interaction_Area>();
 
 		private Collider2D playerCollider;
@@ -31,9 +31,9 @@ namespace TrollBridge {
 		private Character_Stats charStats;
 		// The audio clip for when this character attacks.
 		public AudioClip AttackSound;
+        public Exciting_Object Current_Held_Object;
 
-
-		void Awake()
+        void Awake()
 		{
 			// Get the players Collider2D.
 			playerCollider = characterEntity.GetComponent<Collider2D> ();
@@ -100,15 +100,15 @@ namespace TrollBridge {
 
 
 		private bool DialogueInteraction(){
-			// IF we are inside a Action Key Dialogue area.
+			// IF we are inside a Interaction Area area.
 			if(ListOfInteractionAreas.Count > 0){
 				// IF we are not already engaged in a dialogue.
 				if(!IsActionKeyDialogued){
 					// Grab the list of dialogue gameobjects that the player is currently inside.
 					List<Interaction_Area> interaction_areas = ListOfInteractionAreas;
-					// Preset a distance variable to detect the closest action key dialogue.
+					// Preset a distance variable to detect the closest Interaction Area.
 					float _dist = -1f;
-					// Loop through all the Action Key Dialogues.
+					// Loop through all the Interaction Areas.
 					for(int i = 0; i < interaction_areas.Count; i++){
 						// See which one is the closest.
 						float dist = Vector2.Distance(characterEntity.transform.position, interaction_areas[i].gameObject.transform.position);
@@ -117,12 +117,12 @@ namespace TrollBridge {
 						if(_dist == -1f){
 							// Set the shortest distance.
 							_dist = dist;
-							// Set the closest action key dialogue.
+							// Set the closest Interaction Area.
 							ClosestInteractionArea = interaction_areas[i];
 						}else if(dist < _dist){
 							// Set the shortest distance.
 							_dist = dist;
-							// Set the closest action key dialogue.
+							// Set the closest Interaction Area.
 							ClosestInteractionArea = interaction_areas[i];
 						}
 					}
@@ -300,5 +300,13 @@ namespace TrollBridge {
 			// Save the Bombs.
 			GetComponentInChildren<Bombs>().SaveBombs ();
 		}
-	}
+
+        public void Pick_Up_Object(Exciting_Object obj)
+        {
+            obj.IsInHand = true;
+            Current_Held_Object = obj;
+            Debug.Log("GOT THE OBJ " + obj.ToString());
+        }
+
+    }
 }
