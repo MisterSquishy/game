@@ -82,6 +82,7 @@ namespace TrollBridge
             // IF the closest gameobject is not null.
             if (_character != null)
             {
+                //TODO WHY DO I GIVE UP ON HIM AFTER HE PICKS UP THE BALL?
                 float distance = (transform.position - _character.GetComponent<Character>().characterEntity.transform.position).magnitude;
                 if (distance > ComfortZoneEnd)
                 {

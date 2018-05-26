@@ -8,7 +8,7 @@ namespace TrollBridge {
     {
         public override void Do_Interaction()
         {
-            if (_playerManager.Current_Held_Object != null)
+            if (_playerManager.Current_Held_Object == null)
             {
                 _playerManager.Pick_Up_Object(this.GetComponentInParent<Exciting_Object>());
             }

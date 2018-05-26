@@ -305,7 +305,6 @@ namespace TrollBridge {
         {
             obj.IsInHand = true;
             Current_Held_Object = obj;
-            Debug.Log("GOT THE OBJ " + obj.ToString());
         }
 
     }

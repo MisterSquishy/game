@@ -28,24 +28,13 @@ namespace TrollBridge
         {
             if (IsInMouth)
             {
-                objectRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-                objectRenderer.sortingOrder = playerRenderer.sortingOrder + 1;
-                GameObject _character = null;
-                _character = Character_Manager.GetClosestCharacterTypeWithRawTransform(this.transform, CharacterType.Scout, _character, float.PositiveInfinity);
-                // Move the actual character of this gameobject closer to _character gameobject.
-                this.transform.position = _character.transform.GetChild(0).position; //get the actual scout, not the scout manager
+                GameObject _scout = null; //cleanup why do we have to pass null to this function?
+                _scout = Character_Manager.GetClosestCharacterTypeWithRawTransform(this.transform, CharacterType.Scout, _scout, float.PositiveInfinity);
+                this.transform.position = _scout.transform.GetChild(0).position; //get the actual scout, not the scout manager
             }
             else if (IsInHand)
             {
-                objectRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-                objectRenderer.sortingOrder = playerRenderer.sortingOrder + 1;
-                GameObject _character = Character_Manager.GetPlayerManager().GetComponent<Player_Manager>().GetComponentInParent<Character>().gameObject;
-                // Move the actual character of this gameobject closer to _character gameobject.
-                this.transform.position = _character.transform.GetChild(0).position; //get the actual scout, not the scout manager
-            }
-            else
-            {
-                objectRenderer.sortingOrder = playerRenderer.sortingOrder - 1;
+                this.transform.position = Character_Manager.GetPlayer().transform.position;
             }
         }
     }
