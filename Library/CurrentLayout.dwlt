@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 0
     width: 509
     height: 316
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -67,10 +67,10 @@ MonoBehaviour:
     y: 0
     width: 509
     height: 947
-  m_MinSize: {x: 234, y: 471}
-  m_MaxSize: {x: 10004, y: 14021}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 94
+  controlID: 71
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 713, y: 471}
-  m_MaxSize: {x: 18008, y: 14021}
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 151
+  controlID: 150
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -479,20 +479,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Troll Bridge Studios/2D Starter Kit/preFabs/UI
+    - Assets/Troll Bridge Studios/2D Starter Kit/Art/Player
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Troll Bridge Studios/2D Starter Kit/preFabs/UI
+  - Assets/Troll Bridge Studios/2D Starter Kit/Art/Player
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Dropbox\unity stuff\Scout
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 180a0000
-    m_LastClickedID: 2584
-    m_ExpandedIDs: 00000000d0090000fe090000600a0000ba0a0000ba0b0000020e00002a0e0000720f00005e12000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 35}
+    m_SelectedIDs: 1c0f0000
+    m_LastClickedID: 3868
+    m_ExpandedIDs: 00000000d8090000060a00005e0a0000680a0000c20a0000c20b00000c0e0000340e0000800f00006c12000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -520,7 +520,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d0090000fe090000560a0000600a0000ba0a0000ba0b0000fe0c00002a0e0000720f00005e120000
+    m_ExpandedIDs: 00000000d8090000060a00005e0a0000680a0000c20a0000c20b00000c0e0000340e0000800f00006c120000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: d23b0000282a00000a2900000e29000010290000dc0d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -602,9 +602,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5e5bfeff
-    m_LastClickedID: -107682
-    m_ExpandedIDs: dc58feff4c5bfeff5e5bfeff605bfeff665cfeff126efefff495feff6498feff7698feff7898feff7e99feffa2a9feff16cffeff28cffeff2acffeff7cd5feff46e2feffaae5feffaee5feffeae5feffaa15ffffbe5bffffc25bffffdc5bffffde5bffffe05bffff7c85fffffe87ffff1c88ffff1e88ffffe288ffff2c98ffff60d9ffff62d9ffff64d9ffff84f8ffff24fbffff26fbffffeafbffff000000008c130000c4150000aa1600002c5500006c57000054580000645800007a5f0000627200009a74000080750000068c0000408e0000268f0000bea90000f8ab0000deac0000
+    m_SelectedIDs: 7a140000
+    m_LastClickedID: 5242
+    m_ExpandedIDs: eafbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -623,7 +623,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 2}
     m_SearchString: 
   m_ExpandedScenes:
-  - Field
+  - Demo Start
   m_CurrenRootInstanceID: 0
   m_LockTracker:
     m_IsLocked: 0
