@@ -88,8 +88,8 @@ namespace TrollBridge {
 		/// </summary>
 		public void IncreaseBaseMoveSpeed(float amount)
 		{
-			// We add to our bonus variable to keep track of how much bonus we have.
-			BonusMoveSpeed += amount;
+            // We add to our bonus variable to keep track of how much bonus we have.
+            BonusMoveSpeed += amount;
 		}
 
 
@@ -272,15 +272,20 @@ namespace TrollBridge {
 			// IF we are loading the player,
 			// ELSE we are loading an enemy.
 			if (playerManager != null) {
-				// Load the information.
-				charStatsJson = PlayerPrefs.GetString ("Player");
-				// IF there is nothing in this string.
-				if (String.IsNullOrEmpty (charStatsJson)) {
-					// Load the default value of the stats.
-					CurrentHealth =  DefaultHealth;
-					CurrentMana =  DefaultMana;
-					// GTFO of here we done son!
-					return;
+                // Load the information.
+                charStatsJson = PlayerPrefs.GetString ("Player");
+                // IF there is nothing in this string.
+                if (String.IsNullOrEmpty(charStatsJson))
+                {
+                    // Load the default value of the stats.
+                    CurrentDamage = DefaultDamage;
+                    CurrentHealth = DefaultHealth;
+                    MaxHealth = DefaultMaxHealth;
+                    CurrentMana = DefaultMana;
+                    MaxMana = DefaultMaxMana;
+                    CurrentMoveSpeed = DefaultMoveSpeed;
+                    // GTFO of here we done son!
+                    return;
 				}
 			} else {
 				// Load the information. (scene name / gameobject name).

@@ -26,7 +26,6 @@ namespace TrollBridge {
 		public List<Interaction_Area> ListOfInteractionAreas = new List<Interaction_Area>();
 
 		private Collider2D playerCollider;
-		private Equipment equipment;
 		// The stats of the Player.
 		private Character_Stats charStats;
 		// The audio clip for when this character attacks.
@@ -39,18 +38,12 @@ namespace TrollBridge {
 			playerCollider = characterEntity.GetComponent<Collider2D> ();
 			// Assign the Animator Component.
 			CharacterAnimator = characterEntity.GetComponent<Animator> ();
-			// Get the Equipment Script.
-			equipment = GetComponentInChildren<Equipment> ();
 			// Get the Character Stats script.
 			charStats = GetComponentInChildren<Character_Stats> ();
-			// Load the Inventory.
-			Grid.inventory.LoadInventory();
 		}
 
 		void Start()
 		{
-			// Load stats from items.
-			LoadStatsFromItems();
 			// IF there is a animator on the Player.
 			if(CharacterAnimator != null)
 			{
@@ -71,8 +64,6 @@ namespace TrollBridge {
 		}
 
 		void Update(){
-			// Load stats from bonus stats, default stats and items.
-			LoadStatsFromItems();
 			// Make the player look at the NPC it is interacting with.
 			PlayerLookDirection();
 			if (Input.GetKeyDown (InteractionKey) && DialogueInteraction()) {
@@ -259,21 +250,6 @@ namespace TrollBridge {
 			// We are not being jolted anymore.
 			currentlyJolted = false;
 		}
-			
-		/// <summary>
-		/// This method handles assigning your stats when you either load your stats or equip an item as all stats need to be recalculated when something like this happens.
-		/// </summary>
-		public void LoadStatsFromItems()
-		{
-			// current damage = default/base damage + bonus damage + damage from items.
-			charStats.SetCurrentDamage(charStats.GetDefaultDamage() + charStats.GetBonusDamage() + (float) (equipment.GetWeaponDamage () + equipment.GetArmourDamage () + equipment.GetRingDamage() + equipment.GetBraceletDamage ()));
-			// max health = default/base max health + bonus health + health from items.
-			charStats.MaxHealth = charStats.GetDefaultMaxHealth() + charStats.GetBonusHealth() + (float)(equipment.GetWeaponHealth () + equipment.GetArmourHealth () + equipment.GetRingHealth () + equipment.GetBraceletHealth ());
-			// max mana = default/base max mana + bonus mana + mana from item.
-			charStats.MaxMana = charStats.GetDefaultMaxMana() + charStats.GetBonusMana() + (float) (equipment.GetWeaponMana () + equipment.GetArmourMana () + equipment.GetRingMana () + equipment.GetBraceletMana ());
-			// current movement speed = default movement speed + bonus movement speed + movement speed from items.
-			charStats.CurrentMoveSpeed = charStats.GetDefaultMoveSpeed() + charStats.GetBonusMoveSpeed() + equipment.GetWeaponMoveSpeed () + equipment.GetArmourMoveSpeed () + equipment.GetRingMoveSpeed () + equipment.GetBraceletMoveSpeed ();
-		}
 
 		public float GetHealth(){
 			return charStats.CurrentHealth;
@@ -287,18 +263,8 @@ namespace TrollBridge {
 		}			
 
 		public void SavePlayer(){
-			// Save the Inventory.
-			Grid.inventory.Save ();
 			// Save the Character Stats.
 			charStats.Save();
-			// Save the Equipment.
-			equipment.Save();
-			// Save the types of Currencies/Money.
-			GetComponentInChildren<Money>().Save ();
-			// Save the Keys.
-			GetComponentInChildren<Key>().Save ();
-			// Save the Bombs.
-			GetComponentInChildren<Bombs>().SaveBombs ();
 		}
 
         public void Pick_Up_Object(Exciting_Object obj)

@@ -7,9 +7,6 @@ namespace TrollBridge{
 		public static Helper_Manager helper;
 		public static Sound_Manager soundManager;
 		public static State_Manager stateManager;
-		public static Item_Database itemDataBase;
-		public static Inventory inventory;
-		public static Tooltip tooltip;
 		public static Options_Manager optionManager;
 		public static Setup setup;
 		public static Move_GameObject deathPanel;
@@ -19,9 +16,6 @@ namespace TrollBridge{
 			GameObject g;
 			g = SafeFind("_Holder");
 			helper = (Helper_Manager)SafeComponent (g, "Helper_Manager");
-			itemDataBase = (Item_Database)SafeComponent (g, "Item_Database");
-			inventory = (Inventory)SafeComponent (g, "Inventory");
-			tooltip = (Tooltip)SafeComponent (g, "Tooltip");
 			stateManager = (State_Manager)SafeComponent (g, "State_Manager");
 			setup = (Setup)SafeComponent (g, "Setup");
 

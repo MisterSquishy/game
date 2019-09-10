@@ -78,32 +78,11 @@ namespace TrollBridge {
 			for (int i = 0; i < data.objectData.Count; i++) {
 				// GameObject reference.
 				GameObject gObject = GameObject.Find (data.objectData[i].name);
-				// IF the saved GameObject does not exist currently in this scene (meaning it was added after hitting play so in this current case it is something in our Resources folder that was put on the ground).
-				if (gObject == null) {
-					// Lets create the Item GameObject.
-					gObject = Instantiate (Grid.setup.GetGameObjectPrefab (data.objectData[i].name));
-				}
-				// IF this item is not an item in the players inventory.
-				if (gObject.GetComponent<Item_Data> () == null) {
-					// Set the position where it was last left off.
-					gObject.transform.position = new Vector3 (data.objectData[i].xPos, data.objectData[i].yPos, data.objectData[i].zPos);
-					// Set the layer where it was last left off.
-					gObject.layer = data.objectData[i].layer;
-					// IF there is a sprite name letting us know there is a Sprite Renderer.
-					if (!String.IsNullOrEmpty (data.objectData[i].spriteName)) {
-						// Set the Sprite Renderer properties.
-						gObject.GetComponent<SpriteRenderer> ().sprite = Grid.setup.GetSprite (data.objectData[i].spriteName);
-						gObject.GetComponent<SpriteRenderer> ().sortingLayerName = data.objectData[i].sortLayerName;
-						gObject.GetComponent<SpriteRenderer> ().sortingOrder = data.objectData[i].sortLayerOrder;
-					}
-					// IF there is a collider involved.
-					if (data.objectData[i].isCollider) {
-						// Set the collider either active or inactive.
-						gObject.GetComponent<Collider2D> ().enabled = data.objectData[i].activeCollider;
-					}
-					// Set the GameObject either active or inactive.
-					gObject.SetActive (data.objectData[i].active);
-				}
+                // IF the saved GameObject does not exist currently in this scene (meaning it was added after hitting play so in this current case it is something in our Resources folder that was put on the ground).
+                if (gObject == null) {
+                    // Lets create the Item GameObject.
+                    gObject = Instantiate(Grid.setup.GetGameObjectPrefab(data.objectData[i].name));
+                }
 			}
 		}
 	}
