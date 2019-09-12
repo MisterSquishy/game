@@ -82,7 +82,6 @@ namespace TrollBridge
             // IF the closest gameobject is not null.
             if (_character != null)
             {
-                //TODO WHY DO I GIVE UP ON HIM AFTER HE PICKS UP THE BALL?
                 float distance = (transform.position - _character.GetComponent<Character>().characterEntity.transform.position).magnitude;
                 if (distance > ComfortZoneEnd)
                 {
@@ -147,7 +146,7 @@ namespace TrollBridge
             foreach (RaycastHit2D obj in objectsInSight)
             {
                 Exciting_Object exciting_obj = (Exciting_Object)obj.collider.gameObject.GetComponent("Exciting_Object");
-                if (Current_Exciting_Object == null || (exciting_obj != null && exciting_obj.ExcitementLevel > Current_Exciting_Object.ExcitementLevel))
+                if (exciting_obj != null && (Current_Exciting_Object == null || exciting_obj.ExcitementLevel > Current_Exciting_Object.ExcitementLevel))
                 {
                     Current_Exciting_Object = exciting_obj;
                 }
@@ -169,7 +168,6 @@ namespace TrollBridge
 
         public void Drop_It()
         {
-            Current_Held_Object.ExcitementLevel = 0; //so she doesn't pick it right back up
             Current_Held_Object.IsInMouth = false;
             Current_Held_Object = null;
         }

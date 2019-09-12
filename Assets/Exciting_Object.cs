@@ -37,5 +37,14 @@ namespace TrollBridge
                 this.transform.position = Character_Manager.GetPlayer().transform.position;
             }
         }
+
+        public void throw_away()
+        {
+            if (IsInHand)
+            {
+                IsInHand = false;
+                this.transform.position = new Vector3(this.transform.position.x + 10, this.transform.position.y + 10);
+            }
+        }
     }
 }

@@ -63,15 +63,27 @@ namespace TrollBridge {
 			}
 		}
 
-		void Update(){
-			// Make the player look at the NPC it is interacting with.
-			PlayerLookDirection();
-			if (Input.GetKeyDown (InteractionKey) && DialogueInteraction()) {
-                ClosestInteractionArea.Do_Interaction();
-			} else if (Input.GetKeyDown (AttackKey) && CharacterAnimator != null) {
-				Attack ("IsAttacking", AttackSound);
-			}
-		}
+        void Update()
+        {
+            // Make the player look at the NPC it is interacting with.
+            PlayerLookDirection();
+            if (Input.GetKeyDown(InteractionKey))
+            {
+                if (DialogueInteraction())
+                {
+                    ClosestInteractionArea.Do_Interaction();
+                }
+                else if (Current_Held_Object != null)
+                {
+                    Current_Held_Object.throw_away();
+                    Current_Held_Object = null;
+                }
+                else if (CharacterAnimator != null)
+                {
+                    Attack("IsAttacking", AttackSound);
+                }
+            }
+        }
 
 		/// <summary>
 		/// When the player attacks (As you can see I pass a AudioClip as a parameter for the sound to this GameObject as different attacks can have different sounds).  
