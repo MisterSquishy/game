@@ -136,7 +136,7 @@ namespace TrollBridge
 
 
             HashSet<RaycastHit2D> objectsInSight = new HashSet<RaycastHit2D>();
-            for (float i = -45; i <= 45; i += 1)
+            for (float i = -45; i <= 45; i += 5)
             {
                 Vector3 startOffset = Vector3.Scale(Quaternion.AngleAxis(i, Vector3.forward) * direction, new Vector3(0.5f, 0.5f, 0.5f));
                 Debug.DrawRay(start + startOffset, Quaternion.AngleAxis(i, Vector3.forward) * direction * distance, Color.red);

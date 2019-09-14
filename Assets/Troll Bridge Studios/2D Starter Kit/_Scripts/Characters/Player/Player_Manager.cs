@@ -65,8 +65,6 @@ namespace TrollBridge {
 
         void Update()
         {
-            // Make the player look at the NPC it is interacting with.
-            PlayerLookDirection();
             if (Input.GetKeyDown(InteractionKey))
             {
                 if (DialogueInteraction())
@@ -78,10 +76,6 @@ namespace TrollBridge {
                     Current_Held_Object.throw_away();
                     Current_Held_Object = null;
                 }
-                else if (CharacterAnimator != null)
-                {
-                    Attack("IsAttacking", AttackSound);
-                }
             }
         }
 
@@ -92,6 +86,7 @@ namespace TrollBridge {
 		/// </summary>
 		public void Attack(string animationNameValue, AudioClip clip){
 			// IF we are currently not attacking.
+            /* todo leaving this behind cuz it'll be useful for pickup/throw animations
 			if (!CharacterAnimator.GetBool (animationNameValue)) 
 			{
 				// Set the Attack Animation.
@@ -99,6 +94,7 @@ namespace TrollBridge {
 				// Play the attack sound (if there is one).
 				Grid.soundManager.PlaySound (clip);
 			}
+            */
 		}
 
 
@@ -137,30 +133,6 @@ namespace TrollBridge {
 			}
 			// No dialogue started so we return false.
 			return false;
-		}
-
-		/// <summary>
-		/// This will make the Player look at whoever they are focused on.  Think of a dialogue if you are talking to someone
-		/// lets make sure we are facing them (if you have the animations to do so, if not nothing bad will happen in terms of crashing or atleast it shouldnt :3).
-		/// </summary>
-		private void PlayerLookDirection(){
-			if(ClosestInteractionArea != null){
-				// Store the focused objects Transform.
-				Transform focTransform = ClosestInteractionArea.transform;
-				// IF we have a Four Direction Animation for this gameobject,
-				// ELSE IF we have a Eight Direction Animation for this gameobject.
-				if(FourDirAnim){
-					Grid.helper.FourDirectionAnimation(focTransform.position.x - characterEntity.transform.position.x, 
-						focTransform.position.y - characterEntity.transform.position.y,
-						false,
-						CharacterAnimator);
-				}else if(EightDirAnim){
-					Grid.helper.EightDirectionAnimation(focTransform.position.x - characterEntity.transform.position.x, 
-						focTransform.position.y - characterEntity.transform.position.y,
-						false,
-						CharacterAnimator);
-				}
-			}
 		}
 
 		/// <summary>
