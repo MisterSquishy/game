@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TrollBridge
 {
@@ -13,15 +11,7 @@ namespace TrollBridge
         public bool CanBeChewed = false;
         public bool IsInMouth = false;
         public bool IsInHand = false;
-        private SpriteRenderer playerRenderer;
-        private SpriteRenderer objectRenderer;
-
-        // Use this for initialization
-        void Start()
-        {
-            playerRenderer = Character_Manager.GetPlayer().GetComponent<SpriteRenderer>();
-            objectRenderer = GetComponent<SpriteRenderer>();
-        }
+        private Vector3 Velocity = new Vector3(0,0,0);
 
         // Update is called once per frame
         void Update()
@@ -36,14 +26,38 @@ namespace TrollBridge
             {
                 this.transform.position = Character_Manager.GetPlayer().transform.position;
             }
+            else if (Velocity.magnitude > 0)
+            {
+                this.transform.position = this.transform.position + Velocity;
+                Velocity = Vector3.Scale(Velocity, new Vector3(0.75f, 0.75f));
+
+            }
         }
 
-        public void throw_away()
+        public void pick_up(CharacterType characterType)
+        {
+            if (characterType.Equals(CharacterType.Scout))
+            {
+                IsInMouth = true;
+            }
+            else
+            {
+                IsInHand = true;
+            }
+        }
+
+        public void drop_it()
+        {
+            IsInMouth = false;
+        }
+
+        public void throw_away(Vector3 direction)
         {
             if (IsInHand)
             {
                 IsInHand = false;
-                this.transform.position = new Vector3(this.transform.position.x + 10, this.transform.position.y + 10);
+                // todo is this a dumb way to scale this vector?
+                Velocity = direction.normalized;
             }
         }
     }

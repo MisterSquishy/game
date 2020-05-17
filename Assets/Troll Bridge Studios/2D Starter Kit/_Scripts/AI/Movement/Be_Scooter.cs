@@ -160,7 +160,7 @@ namespace TrollBridge
                 Vector2.MoveTowards(transform.position, Current_Exciting_Object.transform.position, Time.deltaTime * True_Speed);
             if (transform.position == Current_Exciting_Object.transform.position)
             {
-                Current_Exciting_Object.IsInMouth = true;
+                Current_Exciting_Object.pick_up(CharacterType.Scout);
                 Current_Held_Object = Current_Exciting_Object;
                 Current_Exciting_Object = null;
             }
@@ -168,7 +168,7 @@ namespace TrollBridge
 
         public void Drop_It()
         {
-            Current_Held_Object.IsInMouth = false;
+            Current_Held_Object.drop_it();
             Current_Held_Object = null;
         }
     }
