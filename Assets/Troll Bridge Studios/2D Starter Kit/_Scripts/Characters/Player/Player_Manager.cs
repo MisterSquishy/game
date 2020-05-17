@@ -16,8 +16,6 @@ namespace TrollBridge {
 		// The invert movement for the Y.
 		public int PlayerInvertY = 1;
 
-		// Is the player engaged in an Interaction Area.
-		public bool IsActionKeyDialogued = false;
 		// The Interaction Area we are currently engaged in due to it being the closest.
 		public Interaction_Area ClosestInteractionArea = null;
 		// The List of Area Dialogues currently inside.
@@ -117,34 +115,30 @@ namespace TrollBridge {
 
 
 		private bool DialogueInteraction(){
+            // todo fuck all this
 			// IF we are inside a Interaction Area area.
 			if(ListOfInteractionAreas.Count > 0){
-				// IF we are not already engaged in a dialogue.
-				if(!IsActionKeyDialogued){
-					// Grab the list of dialogue gameobjects that the player is currently inside.
-					List<Interaction_Area> interaction_areas = ListOfInteractionAreas;
-					// Preset a distance variable to detect the closest Interaction Area.
-					float _dist = -1f;
-					// Loop through all the Interaction Areas.
-					for(int i = 0; i < interaction_areas.Count; i++){
-						// See which one is the closest.
-						float dist = Vector2.Distance(characterEntity.transform.position, interaction_areas[i].gameObject.transform.position);
-						// IF this is the first time in here. Also this takes care of 1 Interactive NPC in the List.
-						// ELSE IF we have more interactive npcs and we need to compare distance to see which is closest.
-						if(_dist == -1f){
-							// Set the shortest distance.
-							_dist = dist;
-							// Set the closest Interaction Area.
-							ClosestInteractionArea = interaction_areas[i];
-						}else if(dist < _dist){
-							// Set the shortest distance.
-							_dist = dist;
-							// Set the closest Interaction Area.
-							ClosestInteractionArea = interaction_areas[i];
-						}
+				// Grab the list of dialogue gameobjects that the player is currently inside.
+				List<Interaction_Area> interaction_areas = ListOfInteractionAreas;
+				// Preset a distance variable to detect the closest Interaction Area.
+				float _dist = -1f;
+				// Loop through all the Interaction Areas.
+				for(int i = 0; i < interaction_areas.Count; i++){
+					// See which one is the closest.
+					float dist = Vector2.Distance(characterEntity.transform.position, interaction_areas[i].gameObject.transform.position);
+					// IF this is the first time in here. Also this takes care of 1 Interactive NPC in the List.
+					// ELSE IF we have more interactive npcs and we need to compare distance to see which is closest.
+					if(_dist == -1f){
+						// Set the shortest distance.
+						_dist = dist;
+						// Set the closest Interaction Area.
+						ClosestInteractionArea = interaction_areas[i];
+					}else if(dist < _dist){
+						// Set the shortest distance.
+						_dist = dist;
+						// Set the closest Interaction Area.
+						ClosestInteractionArea = interaction_areas[i];
 					}
-					// We are now engaged in a dialogue.
-					IsActionKeyDialogued = true;
 				}
 				// We have started a dialogue so return true.
 				return true;

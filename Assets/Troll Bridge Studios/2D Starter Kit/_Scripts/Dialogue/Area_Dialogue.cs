@@ -173,7 +173,7 @@ namespace TrollBridge {
 		// Create the Dialogue box.
 		private void CreateDialogue(){
 			// IF we are engaged in a Interaction Area OR we currently have this dialogue running.
-			if (_playerManager.IsActionKeyDialogued || !isFinished) {
+			if (!isFinished) {
 				return;
 			}
 			// IF the dialogue box is not active.

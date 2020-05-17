@@ -102,8 +102,6 @@ namespace TrollBridge
             {
                 // Set the closest Interaction Area to null.
                 _playerManager.ClosestInteractionArea = null;
-                // Set the bool to show if this is an Interaction Area to false.
-                _playerManager.IsActionKeyDialogued = false;
             }
             // Unfreeze the player (in case we froze them).
             _playerManager.CanMove = true;
