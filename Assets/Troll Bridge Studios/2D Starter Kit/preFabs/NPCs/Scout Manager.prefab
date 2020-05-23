@@ -49,6 +49,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -115,6 +116,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef31662cc07c66458d20df8c69f7465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterType: 1
+  characterEntity: {fileID: 1252688374852670}
+  CanMove: 1
+  AlterSpeed: 1
+  CanAttack: 1
+  ImmuneToSlow: 0
+  ImmuneToStun: 0
+  ImmuneToSilence: 0
+  Interactable: 1
+  CharacterAnimator: {fileID: 95824569043956764}
+  FourDirAnim: 0
+  EightDirAnim: 1
+  isActionKeyDialogueRunning: 0
+  actionKeyFocusTarget: {fileID: 1284965470593500}
+  CanBeJolted: 0
+  currentlyJolted: 0
+  HitAnimationTime: 0.2
+  GetHitSound: {fileID: 0}
+  DieSound: {fileID: 0}
+  afterDeathVisual: {fileID: 0}
   TypeToFollow: 0
   AggroDistance: 0
   ComfortZoneEnd: 1.2
@@ -194,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4ad9827d91b8e47bcf84ae032d1b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 1
   characterEntity: {fileID: 1252688374852670}
   CanMove: 1
   AlterSpeed: 1

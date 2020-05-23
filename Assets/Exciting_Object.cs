@@ -9,24 +9,12 @@ namespace TrollBridge
         public float ExcitementLevel = 0f;
         public bool CanBePickedUp = false;
         public bool CanBeChewed = false;
-        public bool IsInMouth = false;
-        public bool IsInHand = false;
         private Vector3 Velocity = new Vector3(0,0,0);
 
         // Update is called once per frame
         void Update()
         {
-            if (IsInMouth)
-            {
-                GameObject _scout = null; //cleanup why do we have to pass null to this function?
-                _scout = Character_Manager.GetClosestCharacterTypeWithRawTransform(this.transform, CharacterType.Scout, _scout, float.PositiveInfinity);
-                this.transform.position = _scout.transform.GetChild(0).position; //get the actual scout, not the scout manager
-            }
-            else if (IsInHand)
-            {
-                this.transform.position = Character_Manager.GetPlayer().transform.position;
-            }
-            else if (Velocity.magnitude > 0)
+            if (Velocity.magnitude > 0)
             {
                 this.transform.position = this.transform.position + Velocity;
                 Velocity = Vector3.Scale(Velocity, new Vector3(0.75f, 0.75f));
@@ -34,30 +22,43 @@ namespace TrollBridge
             }
         }
 
-        public void pick_up(CharacterType characterType)
+        public void pick_up(GameObject gameObject)
         {
-            if (characterType.Equals(CharacterType.Scout))
+            Character holding_character = this.GetComponentInParent<Character>();
+            if (holding_character == null) // no stealing!
             {
-                IsInMouth = true;
-            }
-            else
-            {
-                IsInHand = true;
+                this.transform.SetParent(gameObject.transform);
             }
         }
 
         public void drop_it()
         {
-            IsInMouth = false;
+            this.transform.SetParent(null);
         }
 
-        public void throw_away(Vector3 direction)
+        public void throw_away()
         {
-            if (IsInHand)
+            Character holding_character = this.GetComponentInParent<Character>();
+            if (holding_character != null)
             {
-                IsInHand = false;
-                // todo is this a dumb way to scale this vector?
-                Velocity = direction.normalized;
+                Vector3 direction;
+                switch (holding_character.CharacterAnimator.GetInteger("Direction"))
+                {
+                    case 1:
+                        direction = Vector3.up;
+                        break;
+                    case 2:
+                        direction = Vector3.left;
+                        break;
+                    case 3:
+                        direction = Vector3.down;
+                        break;
+                    default:
+                        direction = Vector3.right; //todo 8 directions!!
+                        break;
+                }
+                this.Velocity = direction.normalized;
+                drop_it();
             }
         }
     }

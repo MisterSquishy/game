@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TrollBridge
 {
 
-    public class Be_Scooter : MonoBehaviour
+    public class Be_Scooter : Character
     {
 
         [Tooltip("The CharacterType to follow")]
@@ -160,7 +160,7 @@ namespace TrollBridge
                 Vector2.MoveTowards(transform.position, Current_Exciting_Object.transform.position, Time.deltaTime * True_Speed);
             if (transform.position == Current_Exciting_Object.transform.position)
             {
-                Current_Exciting_Object.pick_up(CharacterType.Scout);
+                Current_Exciting_Object.pick_up(this.gameObject);
                 Current_Held_Object = Current_Exciting_Object;
                 Current_Exciting_Object = null;
             }

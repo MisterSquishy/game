@@ -67,24 +67,8 @@ namespace TrollBridge {
             {
 				if (Current_Held_Object != null)
 				{
-					Vector3 direction;
-					Debug.Log(CharacterAnimator.GetInteger("Direction").ToString());
-					switch (CharacterAnimator.GetInteger("Direction"))
-					{
-						case 1:
-							direction = Vector3.up;
-							break;
-						case 2:
-							direction = Vector3.left;
-							break;
-						case 3:
-							direction = Vector3.down;
-							break;
-						default:
-							direction = Vector3.right; //todo 8 directions!!
-							break;
-					}
-					Current_Held_Object.throw_away(direction);
+
+					Current_Held_Object.throw_away();
 					Current_Held_Object = null;
 				}
 				else if (DialogueInteraction())
@@ -265,9 +249,8 @@ namespace TrollBridge {
 
         public void Pick_Up_Object(Exciting_Object obj)
         {
-            obj.pick_up(CharacterType.Hero);
+            obj.pick_up(characterEntity);
             Current_Held_Object = obj;
         }
-
     }
 }
